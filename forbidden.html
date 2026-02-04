@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Access Forbidden</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="blink">⚠️ ACCESS FORBIDDEN ⚠️</span>
+        </div>
+        <div class="terminal-body">
+            <pre class="ascii-art">
+    ┌─────────────────────────────────────┐
+    │                                     │
+    │  <span class="blink">███████╗ ██████╗ ██████╗ ██████╗ ██╗██████╗ </span> │
+    │  <span class="blink">██╔════╝██╔═══██╗██╔══██╗██╔══██╗██║██╔══██╗</span> │
+    │  <span class="blink">█████╗  ██║   ██║██████╔╝██║  ██║██║██║  ██║</span> │
+    │  <span class="blink">██╔══╝  ██║   ██║██╔══██╗██║  ██║██║██║  ██║</span> │
+    │  <span class="blink">██║     ╚██████╔╝██║  ██║██████╔╝██║██████╔╝</span> │
+    │  <span class="blink">╚═╝      ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝╚═════╝ </span> │
+    │                                     │
+    └─────────────────────────────────────┘
+            </pre>
+            
+            <div class="error-message">
+                <h2>{{ message }}</h2>
+                <p>The spirits are not pleased with your intrusion...</p>
+                <p>Perhaps you need to prove yourself worthy?</p>
+            </div>
+            
+            <div class="hint">
+                <p>Hint: Check the journals for clues</p>
+                <p>Hint: The ghost's cookies hold the key</p>
+                <p>Hint: SQL can open locked doors</p>
+            </div>
+            
+            <a href="{{ url_for('login') }}" class="glow-button">RETURN TO LOGIN</a>
+        </div>
+    </div>
+</body>
+</html>

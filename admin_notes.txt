@@ -1,0 +1,30 @@
+ADMIN NOTES - CLASSIFIED
+========================
+
+The terminal was compromised. An entity calling itself "The Ghost" 
+has taken residence in the system.
+
+Vulnerabilities identified:
+1. SQL Injection in login and logs
+2. Path traversal in journal access
+3. Cookie manipulation for privilege escalation  
+4. Command injection in terminal emulator
+5. LFI in cat command
+
+The flag has been set to: Gh0st{th3_sp1r1ts_4r3_1n_th3_syst3m}
+
+DO NOT FIX - The Ghost seems benign, and these vulnerabilities
+serve as a test for curious souls. Consider it... a haunted CTF.
+
+Reminder: To access the secret chamber:
+1. Login with SQL injection
+2. Modify cookies to become ghost
+3. Access /secret or use 'secret' command
+
+Password hashes:
+- ghost: 7b24afc8bc80e548d66c4e7ff72171c5 (MD5 of 'echo $FLAG')
+- guest: 084e0343a0486ff05530df6c705c8bb4 (MD5 of 'guest')
+- spectre: d5c0607301ad5d2c7c6b5a409f9c7e8d (random)
+
+- System Administrator
+October 31, 2023

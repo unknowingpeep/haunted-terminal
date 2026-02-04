@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haunted Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="terminal-page">
+    <div class="scanlines"></div>
+    
+    <div class="terminal-container">
+        <div class="terminal">
+            <div class="terminal-header">
+                <span class="blink">HAUNTED TERMINAL - USER: {{ username }}</span>
+                <span class="timestamp" id="timestamp"></span>
+            </div>
+            
+            <div class="terminal-content">
+                <pre class="banner">{{ banner|safe }}</pre>
+                
+                <div class="command-line">
+                    <span class="prompt">[{{ username }}@haunted]$</span>
+                    <form method="GET" action="{{ url_for('terminal') }}" class="cmd-form">
+                        <input type="text" name="cmd" value="{{ command }}" autocomplete="off" 
+                               autofocus class="cmd-input" id="cmd-input">
+                    </form>
+                </div>
+                
+                <pre class="output">{{ output|safe }}</pre>
+                
+                <div class="hints">
+                    <p class="blink-slow">Try: help, ls, cat, journal [id], secret</p>
+                    <p>Ghosts can be summoned with the right incantation...</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sidebar">
+            <h3 class="blink">ACTIVE USERS</h3>
+            <ul class="user-list">
+                <li>ghost (admin) <span class="online">●</span></li>
+                <li>{{ username }} (you) <span class="online">●</span></li>
+                <li>spectre <span class="idle">○</span></li>
+                <li>??? <span class="unknown">?</span></li>
+            </ul>
+            
+            <h3>VULNERABILITIES</h3>
+            <ul class="vuln-list">
+                <li>SQL Injection ⚠️</li>
+                <li>Path Traversal 👻</li>
+                <li>Cookie Tampering 🔓</li>
+                <li>Command Injection 💀</li>
+            </ul>
+            
+            <div class="logout">
+                <a href="{{ url_for('logout') }}" class="glow-button">LOGOUT</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Terminal effects
+        const cmdInput = document.getElementById('cmd-input');
+        const timestamp = document.getElementById('timestamp');
+        
+        // Update timestamp
+        function updateTime() {
+            const now = new Date();
+            timestamp.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+        
+        // Random effects
+        setInterval(() => {
+            if (Math.random() < 0.05) {
+                document.querySelector('.output').textContent += 
+                    '\n[1;37mThe system whispers: "Find the ghost..."[0m';
+            }
+        }, 10000);
+        
+        // Command history
+        let history = [];
+        let historyIndex = -1;
+        
+        cmdInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                history.unshift(cmdInput.value);
+                historyIndex = -1;
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex < history.length - 1) {
+                    historyIndex++;
+                    cmdInput.value = history[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    cmdInput.value = history[historyIndex];
+                } else {
+                    historyIndex = -1;
+                    cmdInput.value = '';
+                }
+            }
+        });
+        
+        // Focus input
+        cmdInput.focus();
+        cmdInput.select();
+    </script>
+</body>
+</html>

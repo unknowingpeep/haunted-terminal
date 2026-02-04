@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Haunted Terminal - Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="login-page">
+    <div class="terminal-window">
+        <div class="terminal-header">
+            <span class="blink">⚠️ HAUNTED TERMINAL ACCESS ⚠️</span>
+        </div>
+        <div class="terminal-body">
+            <pre class="ascii-art">
+    ┌─────────────────────────────────────┐
+    │                                     │
+    │  <span class="blink">██████╗ ██╗  ██╗ ██████╗ ███████╗████████╗</span>  │
+    │  <span class="blink">██╔══██╗██║  ██║██╔═══██╗██╔════╝╚══██╔══╝</span>  │
+    │  <span class="blink">██████╔╝███████║██║   ██║███████╗   ██║</span>   │
+    │  <span class="blink">██╔═══╝ ██╔══██║██║   ██║╚════██║   ██║</span>   │
+    │  <span class="blink">██║     ██║  ██║╚██████╔╝███████║   ██║</span>   │
+    │  <span class="blink">╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝</span>   │
+    │                                     │
+    └─────────────────────────────────────┘
+            </pre>
+            
+            {% if error %}
+            <div class="error-message blink">{{ error }}</div>
+            {% endif %}
+            
+            <form method="POST" class="login-form">
+                <div class="input-group">
+                    <label for="username">USERNAME:</label>
+                    <input type="text" id="username" name="username" required 
+                           placeholder="guest/spectre/ghost?">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">PASSWORD:</label>
+                    <input type="password" id="password" name="password" required
+                           placeholder="The spirits know...">
+                </div>
+                
+                <button type="submit" class="glow-button">LOGIN</button>
+            </form>
+            
+            <div class="hint">
+                <p>Try: username: ' OR '1'='1' --</p>
+                <p>Password: anything</p>
+                <p>Or login as guest:password</p>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="whisper" loop>
+        <source src="{{ url_for('static', filename='sounds/whisper.mp3') }}" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        // Random ghostly effects
+        if (Math.random() < 0.3) {
+            document.getElementById('whisper').volume = 0.1;
+            document.getElementById('whisper').play();
+        }
+        
+        // Flickering effect
+        setInterval(() => {
+            if (Math.random() < 0.1) {
+                document.body.style.filter = 'brightness(0.8)';
+                setTimeout(() => {
+                    document.body.style.filter = 'brightness(1)';
+                }, 100);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+JOURNAL ENTRY #1 - OCTOBER 28, 2023
+
+The terminal has been acting strange lately. I keep hearing whispers 
+from the speakers when no one is logged in.
+
+Today I found this in the logs:
+SELECT * FROM users WHERE username = '' OR '1'='1' -- AND password = '...'
+Someone is trying to break in. The security here is... questionable.
+
+TODO: Change password hashing from MD5 to something stronger.
+TODO: Fix the SQL queries - they're vulnerable to injection.
+
+I also found this weird hash in the database for the ghost account:
+7b24afc8bc80e548d66c4e7ff72171c5
+What could it mean?

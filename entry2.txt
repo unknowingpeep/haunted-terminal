@@ -1,0 +1,15 @@
+JOURNAL ENTRY #2 - OCTOBER 30, 2023
+
+The ghost account has been accessing files it shouldn't. I think 
+there's a privilege escalation vulnerability.
+
+Found this in the cookies during debugging:
+user_token: 7b24afc8bc80e548d66c4e7ff72171c5
+debug_info: user=ghost&level=3
+
+If someone could mimic these cookies... they could access everything.
+
+Note to self: The flag is hidden in /secret, but only the ghost can see it.
+Need to fix this cookie validation issue tomorrow.
+
+The whispers are getting louder tonight...
