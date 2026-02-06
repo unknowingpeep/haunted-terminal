@@ -522,7 +522,7 @@ LOG_LEVEL=ERROR"""
     █ H A U N T E D   T E R M I N A L █
     ▀████████████████████████████████▀
 [0m
-Starting server on http://localhost:5000
+Starting server on http://localhost:2000
 The spirits are listening...
     """)
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=2000, debug=False)
